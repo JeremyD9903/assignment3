@@ -176,7 +176,8 @@ int main () {
                 execvp(args[0], args);
                 perror(args[0]);
                 exit(1);
-            } else {
+            } 
+            else {
                 int childStatus;
                 if (isBackground) {
                     printf("background pid is %d\n", spawnpid);
@@ -196,7 +197,6 @@ int main () {
             }
         }
     }
-
+        }
     return 0;
-}
     }
