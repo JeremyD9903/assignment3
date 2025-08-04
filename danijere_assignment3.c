@@ -145,7 +145,7 @@ int main () {
                         close(inputRedirect);
                         args[i] = NULL;
                         args[i+1] = NULL;
-                } else if (strcmp(args[i], ">") == 0 && args[i + 1] != NULL) {
+                            } else if (strcmp(args[i], ">") == 0 && args[i + 1] != NULL) {
                         outputRedirect = open(args[i + 1], O_WRONLY | O_CREAT | O_TRUNC, 0644);
                         if (outputRedirect == -1) {
                             perror(args[i + 1]);
@@ -168,6 +168,7 @@ int main () {
                         outputRedirect = open("/dev/null", O_WRONLY);
                         dup2(outputRedirect, 1);
                         close(outputRedirect);
+                    }
                 }
                 SIGINT_action.sa_handler = SIG_DFL;
                 sigfillset(&SIGINT_action.sa_mask);
@@ -193,10 +194,9 @@ int main () {
                         lastStatus = WTERMSIG(childStatus);
                         printf("terminated by signal %d\n", lastStatus);
                         fflush(stdout);
-               }
+                    }
+                }
             }
         }
     }
-        }
     return 0;
-    }
